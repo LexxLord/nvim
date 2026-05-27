@@ -1,3 +1,4 @@
 colors
 nvim-pack-lock.json
 .history
+*.log
