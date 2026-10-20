@@ -1,5 +1,5 @@
 ------------------------------------------------------------------------------------------------------------------------
--- Version: 0.24.0
+-- Version: 0.24.5
 -- Author: Lexx_Lord <lexx-lord@mail.ru>
 -- License: MIT
 -- Github: https://github.com/LexxLord/nvim
@@ -8,7 +8,7 @@
 
 
 
--- Запуск терминала в другом эмуляторе терминала =======================================================================
+-- Запуск терминала в другом эмуляторе ================================================================================
 
 -- vim.g.terminal_emulator='powershell'
 -- vim.api.nvim_set_var('terminal_emulator', 'powershell')
@@ -179,9 +179,9 @@ w_key.setup {
     },
 
     layout = {
-        height = { min = 4, max = 20 },     -- минимальная и максимальная высота столбцов
+        height = { min = 4, max = 25 },     -- минимальная и максимальная высота столбцов
         width = { min = 20, max = 50 },     -- минимальная и максимальная ширина столбцов
-        spacing = 3,                        -- расстояние между столбцами
+        spacing = 5,                        -- расстояние между столбцами
         align = 'center',                   -- выровнять столбцы по левому, центральному или правому краю
     },
 
@@ -809,7 +809,7 @@ vim.keymap.set('n', '<leader>X', ':x!<CR>', { desc = "Save and exit forced" })
 
 
 -- Операции с файлами --------------------------------------------------------------------------------------------------
-vim.keymap.set('n', '<leader>fs',
+vim.keymap.set('n', '<leader>fn',
     function() enter_dialog("file ", " Enter new file name ") end, { desc = "Set file name" })
 vim.keymap.set('n', '<leader>fc',
     function() enter_dialog("edit ", " Enter file name ") end, { desc = "Create new file" })
@@ -817,8 +817,10 @@ vim.keymap.set('n', '<leader>fd',
     function() enter_dialog("cd ", " Enter path ") end, { desc = "Chenge directory" })
 vim.keymap.set('n', '<leader>ff',
     function() enter_dialog("g/", " Search regex ", "/") end, { desc = "Search regex in file" })
+vim.keymap.set('n', '<leader>fs',
+    function() enter_dialog("set syntax=", " File syntax ") end, { desc = "File syntax change" })
 vim.keymap.set('n', '<leader>ft',
-    function() enter_dialog("set syntax=", " File type ") end, { desc = "File type change" })
+    function() enter_dialog("set filetype=", " File type ") end, { desc = "File type change" })
 
 
 -- Перезагрузить init.lua ----------------------------------------------------------------------------------------------
@@ -1852,7 +1854,8 @@ endif
 -- КОНЕЦ ФАЙЛА И ПЕРЕЗАГРУЗКА КОНФИГА ==================================================================================
 vim.api.nvim_create_autocmd({'UIEnter'}, {
     callback = function()
-        vim.cmd('source ' .. home_path .. 'init.lua')
+        -- vim.cmd('source ' .. home_path .. 'init.lua')
+        vim.cmd.source(home_path .. "init.lua")
         -- vim.notify("Config reloaded", "INFO", { title = "Nvim" })
         -- print("Config reloaded")
     end,
