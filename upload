@@ -1,5 +1,21 @@
 #!/bin/bash
 
+### Replace HTTPS to SSH ###
+#
+# git remote -v
+#
+# Verify current remote URL
+# > origin  https://github.com/OWNER/REPOSITORY.git (fetch)
+# > origin  https://github.com/OWNER/REPOSITORY.git (push)
+#
+# git remote set-url origin git@github.com:OWNER/REPOSITORY.git
+#
+# git remote -v
+#
+# Verify new remote URL
+# > origin  git@github.com:OWNER/REPOSITORY.git (fetch)
+# > origin  git@github.com:OWNER/REPOSITORY.git (push)
+
 git add .
 
 git commit -m "Initial commit"
